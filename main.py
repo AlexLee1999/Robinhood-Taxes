@@ -1,9 +1,10 @@
 import sys
-import pandas
-import src.parser as parser
+import src.parser
 
 
 if __name__ == "__main__":
-    table = parser.parsing(sys.argv[1])
-    print(table)
+    parser = src.parser.Parser(sys.argv[1], sys.argv[2])
+    parser.parsing()
+    parser.mark_wash_sales()
+    parser.output_csv()
 
