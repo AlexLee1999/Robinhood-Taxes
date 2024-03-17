@@ -56,7 +56,6 @@ class Parser:
                 self._table.add_wash_sales_transactions(new_wash_sales_transactions, key)
                 total_wash_sale_disallowed += float(gain)
             else:
-                # key = f"{name}-{open_date}-{closed_date}"
                 new_transactions = src.transactions.Transactions(
                     name=name,
                     original_name=original_name,

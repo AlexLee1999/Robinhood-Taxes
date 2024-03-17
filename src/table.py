@@ -6,14 +6,10 @@ class Table:
         self._wash_sales_transactions = []
         self._transactions_hash_table = {}
         self._wash_hash_table = {}
-        # self._merged_transactions = []
         self._merged_wash_sales = []
         
     def add_transactions(self, transactions):
         self._transactions.append(transactions)
-        # if key not in self._transactions_hash_table:
-        #     self._transactions_hash_table[key] = []
-        # self._transactions_hash_table[key].append(transactions)
     
     def add_wash_sales_transactions(self, wash_sales_transactions, key):
         self._wash_sales_transactions.append(wash_sales_transactions)
@@ -89,7 +85,7 @@ class Table:
     def mark_wash_sales(self, wash_sales_transactions):
         flag = False
         for trans in self._transactions:
-            if trans._name == wash_sales_transactions._name and f"{trans._gain:.2f}" == f"{wash_sales_transactions._cost:.2f}" and abs(wash_sales_transactions._gain) <= abs(trans._gain) and trans._gain < 0 and not trans._is_wash_sale:
+            if trans._name == wash_sales_transactions._name and round(trans._gain, 2) == round(wash_sales_transactions._cost, 2) and abs(wash_sales_transactions._gain) <= abs(trans._gain) and trans._gain < 0 and not trans._is_wash_sale:
                 trans.mark_wash_sales(float(wash_sales_transactions._gain))
                 flag = True
                 break
@@ -102,10 +98,8 @@ class Table:
                     if round(abs(trans._gain), 2) < round(wash_sales_gain, 2) and wash_sales_gain > 0 and trans._gain < 0:
                         trans.mark_wash_sales(float(abs(trans._gain)))
                         wash_sales_gain -= abs(trans._gain)
-                        # print(f"Mark {trans._name} with loss {trans._gain} disallowed loss {float(abs(trans._gain))}")
                     elif round(abs(trans._gain), 2) >= round(wash_sales_gain, 2) and wash_sales_gain > 0 and trans._gain < 0:
                         trans.mark_wash_sales(wash_sales_gain)
-                        print(f"Mark {trans._name} with loss {trans._gain} disallowed loss {wash_sales_gain}")
                         flag = True
                         break
         
