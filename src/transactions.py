@@ -24,4 +24,4 @@ class Transactions:
         return f"Name: {self._name}, Original Name: {self._original_name}, Acquired Date: {self._acquired_date}, Sold Date: {self._sold_date}, Proceeds: {self._proceeds}, Cost: {self._cost}, Is Wash Sale: {self._is_wash_sale}, Gain Type: {self._gain_type}, Quantity: {self._quantity}, Gain: {self._gain}, Code: {self._code}, Wash Sale Disallowed: {self._wash_sale_disallowed}\n"
 
     def to_csv(self):
-        return f"{self._name},{self._original_name},{self._acquired_date},{self._sold_date},{self._proceeds},{self._cost},{self._is_wash_sale},{self._gain_type},{self._quantity},{self._gain},{self._code},{self._wash_sale_disallowed}\n"
+        return f"{self._name},{self._original_name},{self._acquired_date},{self._sold_date},{self._proceeds:.2f},{self._cost:.2f},{self._is_wash_sale},{self._gain_type},{self._quantity:.2f},{self._gain:.2f},{self._code},{self._wash_sale_disallowed:.2f}\n"
