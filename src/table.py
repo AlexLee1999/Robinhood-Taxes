@@ -14,7 +14,7 @@ class Table:
     def mark_wash_sales(self, wash_sales_transactions):
         for trans in self._transactions:
             if trans._name == wash_sales_transactions._name and trans._gain == wash_sales_transactions._cost:
-                trans.mark_wash_sales()
+                trans.mark_wash_sales(trans._gain * -1)
 
     def __str__(self):
         table_str = "Transactions:\n"

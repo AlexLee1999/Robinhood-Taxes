@@ -59,7 +59,7 @@ class Parser:
                     quantity=quantity,
                     gain=float(gain),
                     code="",
-                    wash_sale_disallowed=""
+                    wash_sale_disallowed=0.0
                 )
                 self._table.add_transactions(new_transactions)
     
@@ -70,7 +70,7 @@ class Parser:
     def output_csv(self):
         count = 1
         with open(self._output_path, "w") as file:
-            file.write(", Name, Original Name, Acquired Date, Sold Date, Proceeds, Cost, Is Wash Sale, Gain Type, Quantity, Gain, Code\n")
+            file.write(", Name, Original Name, Acquired Date, Sold Date, Proceeds, Cost, Is Wash Sale, Gain Type, Quantity, Gain, Code, Wash Sales Disallowed\n")
             for trans in self._table._transactions:
                 file.write(f"{count}, ")
                 file.write(trans.to_csv())
