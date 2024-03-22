@@ -104,7 +104,8 @@ class Parser:
         for trans in self._table._transactions:
             total_cost += round(trans._cost)
             total_proceeds += round(trans._proceeds)
-            total_gain += round(trans._gain + trans._wash_sale_disallowed)
+            total_gain += round(trans._gain)
+            total_gain += round(trans._wash_sale_disallowed)
             total_wash_sale_disallowed += round(trans._wash_sale_disallowed)
         print(f"Total Proceeds: {total_proceeds}, Total Cost: {total_cost}, Total Gain: {total_gain}, Total Wash Sale Disallowed: {total_wash_sale_disallowed}")
     
